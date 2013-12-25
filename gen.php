@@ -97,6 +97,7 @@ while ( ( $file = readdir ( $dir ) ) !== false )
 	$open    = preg_replace("#{MENU}#", $menuTMP, $open);
 	$replace = $template;
 	$replace = preg_replace("#PLACEHOLDER#", $open, $replace);
+	$replace = preg_replace("#&nbsp;WDGWV#", "&nbsp;Open WDGWV", $replace);
 
 	$file = fopen('index.html', 'w');
 	@fwrite($file, $replace);
