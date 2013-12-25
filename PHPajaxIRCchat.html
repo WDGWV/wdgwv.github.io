@@ -66,6 +66,8 @@
   <link rel="shortcut icon" href="http://www.wdgwv.com/favicon.png?v=2" type="image/png">
   <link rel="apple-touch-icon" href="http://www.wdgwv.com/favicon.png?v=2">
   <script type="text/javascript" src="http://www.wdgwv.com/data/img/javascript/modernizr-1.5.min.js"></script>
+  <script type="text/javascript" src="http://www.wdgwv.com/data/img/javascript/menu.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://www.wdgwv.com/data/img/css/menu.css" />
   <script type="text/javascript" src="http://stats.wdgwv.com/count.js"></script>
   <link rel="image_src" type="image/png" href="http://www.wdgwv.com/logo.png" />
   <meta property="og:url" content="http://www.wdgwv.com/" />
@@ -99,9 +101,13 @@
                     <ul class="sf-menu" id="nav">
             <li><a href="http://www.wdgwv.com/home">Home</a>&nbsp;</li>
             <li><a href="http://www.wdgwv.com/dev:app">Apps</a>&nbsp;</li>
-            <li><a href="http://www.wdgwv.com/dev:website">Website</a>&nbsp;</li>
-            <li><a href="http://www.wdgwv.com/dev:design">Design</a>&nbsp;</li>
-            <li><a href="http://www.wdgwv.com/hosting">Hosting</a>&nbsp;</li>
+            <li><a href="http://www.wdgwv.com/dev:website" onmouseover="mopen('website')" onmouseout="mclosetime()">Website&nbsp;&darr;</a>&nbsp;
+                <div id="website" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+                	<a href="http://www.wdgwv.com/dev:website">Website</a>
+					<a href="http://www.wdgwv.com/dev:design">Design</a>
+            		<a href="http://www.wdgwv.com/hosting">Hosting</a>
+            	</div>
+            </li>
             <li><a href="http://www.wdgwv.com/customer">Customer</a>&nbsp;</li>
             <li><a href="http://www.wdgwv.com/portfolio">Portfolio</a>&nbsp;</li>
             <li><a href="http://search.wdgwv.com/">Search</a>&nbsp;</li>
@@ -110,6 +116,7 @@
         </div>
       </nav>
     </header>
+
     <div id="site_content">
       <div class="content" id="content">
 <a href='/index.html'>Back</a><hr /><br /><br />
