@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-PROMPT_COMMAND='echo -ne "\033]0;'WDGWV Github Creator'\007"'
+
 echo -ne "\033]0;'WDGWV Github Creator'\007"
 clear
 echo "                   :....................,:,              "
@@ -172,4 +172,5 @@ sleep 0.1
 echo ""
 sleep 0.1
 echo "WDGWV Created :). plz Upload"
+Github .
 sleep 10
