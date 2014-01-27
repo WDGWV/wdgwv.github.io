@@ -65,3 +65,4 @@ echo ""
 sleep 0.1
 echo "WDGWV Created :). plz Upload"
 Github .
+sleep 10

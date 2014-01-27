@@ -7,3 +7,50 @@ There is no error real error triggering, the error triggering works, but errors 
 	you have a error in qour query near XXXXX<br />
 Is not supported yet.<br />
 <br />
+<br />
+<div style="background: #FFF;">
+<?php
+highlight_string(
+'<?php
+
+/*
+	Supported Functions 
+    WDGWV Fix for mysql_* functions on PHP 5.5+ 
+*/
+
+wdgwv_sql_trigger_error ( $error ); 
+	#Replaces: Nothing.
+
+wdgwv_sql_connect($hostname, $username, $password);
+	#Replaces: mysql_connect($hostname, $username, $password);
+
+wdgwv_sql_select_db($database, $link = null);
+	#Replaces: wdgwv_sql_select_db($database, $link);
+
+wdgwv_sql_error();
+	#Replaces: mysql_error();
+
+wdgwv_sql_query ( $query, $link = null );
+	#Replaces: mysql_query ( $query, $link = null );
+
+wdgwv_sql_fetch_array( $command, $type = null );
+	#Replaces: mysql_fetch_array( $command, $type = null );
+
+wdgwv_sql_fetch_assoc ( );
+	#Replaces: mysql_fetch_assoc ( $query )
+
+wdgwv_sql_fetch_row( $command );
+	#Replaces: mysql_fetch_row( $command );
+
+wdgwv_sql_num_rows ( $query );
+	#Replaces: mysql_num_rows ( $query );
+
+wdgwv_sql_insert_id ( $query = null );
+	#Replaces: mysql_insert_id ( $query = null );
+
+wdgwv_sql_affected_rows ( $query = null );
+	#Replaces: mysql_affected_rows ( $query = null )
+
+?>');
+?>
+</div>

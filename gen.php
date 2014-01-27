@@ -66,7 +66,11 @@ while ( ( $file = readdir ( $dir ) ) !== false )
 	{
 		echo "Generating " . $file . "\r\n";
 
-		$open = file_get_contents('items/' . $file);
+		ob_start();
+		include('items/' . $file);
+		$open = ob_get_contents();
+		ob_end_clean();
+
 		$open = preg_replace("#{BACK}#", "<a href='/index.html'>Back</a><hr /><br /><br />", $open);
 
 		$replace = $template;
@@ -82,7 +86,11 @@ while ( ( $file = readdir ( $dir ) ) !== false )
 }
 
 #FIX THE MENU
-	$open    = file_get_contents('items/index.html');
+	ob_start();
+	include('items/index.html');
+	$open = ob_get_contents();
+	ob_end_clean();
+	
 	$open    = preg_replace("#{BACK}#", "<a href='/index.html'>Back</a><hr /><br /><br />", $open);
 
 	$menuTMP = null;
