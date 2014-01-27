@@ -36,8 +36,8 @@ wdgwv_sql_query ( $query, $link = null );
 wdgwv_sql_fetch_array( $command, $type = null );
 	#Replaces: mysql_fetch_array( $command, $type = null );
 
-wdgwv_sql_fetch_assoc ( );
-	#Replaces: mysql_fetch_assoc ( $query )
+wdgwv_sql_fetch_assoc ( $command, $type = null );
+	#Replaces: mysql_fetch_assoc ( $query, $type = null );
 
 wdgwv_sql_fetch_row( $command );
 	#Replaces: mysql_fetch_row( $command );
@@ -49,7 +49,7 @@ wdgwv_sql_insert_id ( $query = null );
 	#Replaces: mysql_insert_id ( $query = null );
 
 wdgwv_sql_affected_rows ( $query = null );
-	#Replaces: mysql_affected_rows ( $query = null )
+	#Replaces: mysql_affected_rows ( $query = null );
 
 ?>');
 ?>
