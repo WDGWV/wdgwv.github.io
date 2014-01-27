@@ -71,6 +71,7 @@ while ( ( $file = readdir ( $dir ) ) !== false )
 
 		$replace = $template;
 		$replace = preg_replace("#PLACEHOLDER#", $open, $replace);
+		$replace = preg_replace("#&nbsp;WDGWV#", "&nbsp;Open WDGWV", $replace);
 
 		$menu[] = substr($file, 0, -5);
 
@@ -87,8 +88,10 @@ while ( ( $file = readdir ( $dir ) ) !== false )
 	$menuTMP = null;
 	for ($i=0; $i<sizeof($menu); $i++) 
 	{ 
-	
-		$menuTMP .= "<a href=\"{$menu[$i]}.html\">{$menu[$i]}</a>";
+		$item = $menu[$i];
+		$item = preg_replace("/_/", "&nbsp;", $item);
+		
+		$menuTMP .= "<a href=\"{$menu[$i]}.html\">{$item}</a>";
 
 		if ($i < (sizeof($menu)-1) )
 			$menuTMP .= "&nbsp;&nbsp;||&nbsp;&nbsp;";
