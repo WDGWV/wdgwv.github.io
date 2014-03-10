@@ -7,7 +7,7 @@ WDGWV (WesDeGroot Projects(WDG.P) &amp; Webdesign velserbroek (WV)) Site System 
 <pre style="background: #FFF; color: black;">
 <?php
 	$content = file_get_contents ( 'https://raw.github.com/WDGWV/WDGWVSS/master/readme.md' ) ;
-	$content = preg_replace		 ( "\r", 		null, 						  	  $content ) ;
+	$content = preg_replace		 ( "#\r#", 		null, 						  	  $content ) ;
 	echo nl2br ( $content ) ;
 ?>
 </pre>
