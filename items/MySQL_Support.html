@@ -22,8 +22,8 @@ highlight_string(
 wdgwv_sql_trigger_error ( $error ); 
 	#Replaces: Nothing.
 
-wdgwv_sql_connect($hostname, $username, $password);
-	#Replaces: mysql_connect($hostname, $username, $password);
+wdgwv_sql_connect ( $hostname, $username, $password );
+	#Replaces: mysql_connect ( $hostname, $username, $password );
 
 wdgwv_sql_select_db($database, $link = null);
 	#Replaces: wdgwv_sql_select_db($database, $link);
@@ -34,14 +34,14 @@ wdgwv_sql_error();
 wdgwv_sql_query ( $query, $link = null );
 	#Replaces: mysql_query ( $query, $link = null );
 
-wdgwv_sql_fetch_array( $command, $type = null );
-	#Replaces: mysql_fetch_array( $command, $type = null );
+wdgwv_sql_fetch_array ( $command, $type = null );
+	#Replaces: mysql_fetch_array ( $command, $type = null );
 
 wdgwv_sql_fetch_assoc ( $command, $type = null );
 	#Replaces: mysql_fetch_assoc ( $query, $type = null );
 
-wdgwv_sql_fetch_row( $command );
-	#Replaces: mysql_fetch_row( $command );
+wdgwv_sql_fetch_row ( $command );
+	#Replaces: mysql_fetch_row ( $command );
 
 wdgwv_sql_num_rows ( $query );
 	#Replaces: mysql_num_rows ( $query );
