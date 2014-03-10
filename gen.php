@@ -58,8 +58,21 @@ $dir = opendir('items');
 
 $template = file_get_contents("http://www.wdgwv.com/placeholder");
 
-$menu = array();
+$menu = ' <li><a href="#" onmouseover="mopen(\'open\')" onmouseout="mclosetime()">Open&nbsp;<b>&darr;</b></a>&nbsp;
+                <div id="open" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">'."\r\n";
 
+while ( ( $file = readdir ( $dir ) ) !== false )
+{
+	if ($file != '.' && $file != '..')
+	{
+		$item = substr($file, 0, -5);
+		$menu .= '<a href="'.$file.'">'.$item.'</a>'."\r\n";
+	}
+}
+$menu .= '            	</div>
+            </li>'."\r\n";
+
+$dir = opendir('items');
 while ( ( $file = readdir ( $dir ) ) !== false )
 {
 	if ($file != '.' && $file != '..')
@@ -71,13 +84,15 @@ while ( ( $file = readdir ( $dir ) ) !== false )
 		$open = ob_get_contents();
 		ob_end_clean();
 
-		$open = preg_replace("#{BACK}#", "<a href='/index.html'>Back</a><hr /><br /><br />", $open);
+		$open = preg_replace("#{BACK}#",	 	null,  $open);
+		$open = preg_replace("#{back}#",		null,  $open);
 
 		$replace = $template;
-		$replace = preg_replace("#PLACEHOLDER#", $open, $replace);
+		$replace = preg_replace("#PLACEHOLDER#", $open, 			 $replace);
+		$replace = preg_replace("#<!--MENU-->#", $menu, 			 $replace);
 		$replace = preg_replace("#&nbsp;WDGWV#", "&nbsp;Open WDGWV", $replace);
 
-		$menu[] = substr($file, 0, -5);
+		//$menu[] = substr($file, 0, -5);
 
 		$file = fopen($file, 'w');
 		@fwrite($file, $replace);
@@ -85,6 +100,7 @@ while ( ( $file = readdir ( $dir ) ) !== false )
 	}
 }
 
+/*
 #FIX THE MENU
 	ob_start();
 	include('items/index.html');
@@ -113,6 +129,7 @@ while ( ( $file = readdir ( $dir ) ) !== false )
 	$file = fopen('index.html', 'w');
 	@fwrite($file, $replace);
 	@fclose($file);
+*/
 
-echo "All Files Created!\r\n\tDon't Wait!!!\r\n\r\n\t\tUPLOAD IT!!!";
+echo "All Files Created!\r\n\tDon't Wait!!!\r\n\r\n\t\tUPLOAD IT!!!\r\n\r\n";
 ?>
