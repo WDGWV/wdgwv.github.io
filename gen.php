@@ -58,8 +58,22 @@ $dir = opendir('items');
 
 $template = file_get_contents("http://www.wdgwv.com/placeholder");
 
-$menu = array();
+$menu = '             <li><a href="#" onmouseover="mopen(\'open\')" onmouseout="mclosetime()">Open&nbsp;<b>&darr;</b></a>&nbsp;
+<div id="open" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">';
 
+while ( ( $file = readdir ( $dir ) ) !== false )
+{
+	if ($file != '.' && $file != '..')
+	{
+		$item = substr($file, 0, -5);
+		$item = preg_replace("#_#", " ", $item);
+		$menu .= '<a href="' . $file . '">' . $item . '</a>';
+	}
+}
+$menu .= '            	</div>
+            </li>';
+
+$dir = opendir('items');
 while ( ( $file = readdir ( $dir ) ) !== false )
 {
 	if ($file != '.' && $file != '..')
@@ -75,9 +89,10 @@ while ( ( $file = readdir ( $dir ) ) !== false )
 
 		$replace = $template;
 		$replace = preg_replace("#PLACEHOLDER#", $open, $replace);
+		$replace = preg_replace("#<!--MENU-->#", $menu, $replace);
 		$replace = preg_replace("#&nbsp;WDGWV#", "&nbsp;Open WDGWV", $replace);
 
-		$menu[] = substr($file, 0, -5);
+		//$menu[] = substr($file, 0, -5);
 
 		$file = fopen($file, 'w');
 		@fwrite($file, $replace);
@@ -85,34 +100,5 @@ while ( ( $file = readdir ( $dir ) ) !== false )
 	}
 }
 
-#FIX THE MENU
-	ob_start();
-	include('items/index.html');
-	$open = ob_get_contents();
-	ob_end_clean();
-	
-	$open    = preg_replace("#{BACK}#", "<a href='/index.html'>Back</a><hr /><br /><br />", $open);
-
-	$menuTMP = null;
-	for ($i=0; $i<sizeof($menu); $i++) 
-	{ 
-		$item = $menu[$i];
-		$item = preg_replace("/_/", "&nbsp;", $item);
-		
-		$menuTMP .= "<a href=\"{$menu[$i]}.html\">{$item}</a>";
-
-		if ($i < (sizeof($menu)-1) )
-			$menuTMP .= "&nbsp;&nbsp;||&nbsp;&nbsp;";
-	}
-
-	$open    = preg_replace("#{MENU}#", $menuTMP, $open);
-	$replace = $template;
-	$replace = preg_replace("#PLACEHOLDER#", $open, $replace);
-	$replace = preg_replace("#&nbsp;WDGWV#", "&nbsp;Open WDGWV", $replace);
-
-	$file = fopen('index.html', 'w');
-	@fwrite($file, $replace);
-	@fclose($file);
-
-echo "All Files Created!\r\n\tDon't Wait!!!\r\n\r\n\t\tUPLOAD IT!!!";
+echo "All Files Created!\r\n\tDon't Wait!!!\r\n\r\n\t\tUPLOAD IT!!!\r\n\r\n";
 ?>
