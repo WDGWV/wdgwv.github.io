@@ -89,7 +89,7 @@ while ( ( $file = readdir ( $dir ) ) !== false )
 
 		$replace = $template;
 		$replace = preg_replace("#PLACEHOLDER#", $open, $replace);
-		$replace = preg_replace("#<!--MENU-->#", $menu, $replace);
+		$replace = preg_replace("#<li class='menu'></li>#", $menu, $replace);
 		$replace = preg_replace("#&nbsp;WDGWV#", "&nbsp;Open WDGWV", $replace);
 
 		//$menu[] = substr($file, 0, -5);
