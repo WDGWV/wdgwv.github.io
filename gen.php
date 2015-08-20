@@ -57,9 +57,18 @@
 $dir = opendir('items');
 
 $template = file_get_contents("http://www.wdgwv.com/placeholder");
-
-$menu = '             <li><a href="#" onmouseover="mopen(\'open\')" onmouseout="mclosetime()">Open&nbsp;<b>&darr;</b></a>&nbsp;
-<div id="open" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">';
+/*
+							<li>
+								<a href="https://www.wdgwv.com/dev:app">Website&nbsp;&darr;</a>
+								<ul>
+									<li><a href="https://www.wdgwv.com/lease:website">Lease</a></li>
+                					<li><a href="https://www.wdgwv.com/dev:website">Website</a></li>
+									<li><a href="https://www.wdgwv.com/dev:design">Design</a></li>
+            						<li><a href="https://www.wdgwv.com/hosting">Hosting</a></li>
+								</ul>
+							</li>
+*/
+$menu = '<li><a href="#">Open&nbsp;&darr;</a><ul>';
 
 while ( ( $file = readdir ( $dir ) ) !== false )
 {
@@ -67,11 +76,10 @@ while ( ( $file = readdir ( $dir ) ) !== false )
 	{
 		$item = substr($file, 0, -5);
 		$item = preg_replace("#_#", " ", $item);
-		$menu .= '<a href="' . $file . '">' . $item . '</a>';
+		$menu .= '<li><a href="' . $file . '">' . $item . '</a></li>';
 	}
 }
-$menu .= '            	</div>
-            </li>';
+$menu .= '</ul></li>';
 
 $dir = opendir('items');
 while ( ( $file = readdir ( $dir ) ) !== false )
@@ -87,10 +95,13 @@ while ( ( $file = readdir ( $dir ) ) !== false )
 
 		$open = preg_replace("#{BACK}#", "<a href='/index.html'>Back</a><hr /><br /><br />", $open);
 
+		$item = substr($file, 0, -5);
+		$item = preg_replace("#_#", " ", $item);
+
 		$replace = $template;
+		$replace = preg_replace("#Placeholder#", $item, $replace);
 		$replace = preg_replace("#PLACEHOLDER#", $open, $replace);
-		$replace = preg_replace("#<li class='menu'></li>#", $menu, $replace);
-		$replace = preg_replace("#&nbsp;WDGWV#", "&nbsp;Open WDGWV", $replace);
+		$replace = preg_replace("#<u><i><b></b></i></u>#", $menu, $replace);
 
 		//$menu[] = substr($file, 0, -5);
 
